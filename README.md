@@ -16,8 +16,8 @@ UsersRepository</br>
     [√] should be able to find user by ID</br>
     [√] should be able to find user by e-mail address</br>
     [√] should be able to turn an user as admin</br></br></br>
-ShowUserProfileUseCase</br></br>
-    [√] should be able to get user profile by ID </br>
+ShowUserProfileUseCase</br>
+    [√] should be able to get user profile by ID</br>
     [√] should not be able to show profile of a non existing user</br>
 TurnUserAdminUseCase</br>
     [√] should be able to turn an user as admin</br>
