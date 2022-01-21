@@ -1,0 +1,243 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Documentação Cadastro",
+      "description": "Essa é uma API de Cadastro",
+      "version": "1.0.0",
+      "contact": {
+          "email":  "daianemachado.thera@suzano.com.br"  
+      }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["users"],
+                "summary": "Create a user",
+                    "description": "Create a new user",
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name":{
+                                            "type": "string"
+                                        },
+                                        "admin": {
+                                            "type": "boolean"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "Date"
+                                        },
+                                        "update_at":{
+                                            "type": "string",
+                                            "format": "Date"
+                                        }                                    
+                                    },
+                                    "exemplo": {
+                                        "name": " Daiane Machado",                               
+                                        "email": "daianemachado@gmail.com"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "Created",
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name":{
+                                            "type": "string"
+                                        },
+                                        "admin": {
+                                            "type": "boolean"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "Date"
+                                        },
+                                        "update_at":{
+                                            "type": "string",
+                                            "format": "Date"
+                                        }  
+                                    }                                  
+                                }
+                            }  
+                        },
+                        "400": {
+                            "description": "User already exists"
+                        }
+                    }
+            },
+            "get": {
+                "tags": ["users"],
+                "summary": "List all users",
+                "parameters": [{
+                    "in": "header",
+                    "name": "user_id",
+                    "description": "Admin value equal true to list all users",
+                    "required": true
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type":"string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "admin": {
+                                            "type": "boolean"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "Date"
+                                        },
+                                        "update_at": {
+                                            "type": "Date",
+                                            "format": "Date"
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": " User not found"
+                    }
+                    
+                }
+            }     
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": ["users"],
+                    "summary": "List user profile",
+                    "parameters": [{
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "User id to list the profile",
+                        "required": true
+                    }],
+                    "responses": {
+                        "200":{
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type":"string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "admin": {
+                                                "type": "boolean"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "Date"
+                                            },
+                                            "update_at": {
+                                                "type": "Date",
+                                                "format": "Date"
+                                            }
+                                        }
+    
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description":" User not found"
+                        }
+                    }
+            }       
+        },
+        "/users/{user_id}/admin":{
+            "patch": {
+                "tags": ["users"],
+                    "summary": "Update Admin",
+                    "parameters": [{
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "Update admin",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }],
+                    "responses": {
+                        "200":{
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type":"string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "admin": {
+                                                "type": "boolean"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "Date"
+                                            },
+                                            "update_at": {
+                                                "type": "Date",
+                                                "format": "Date"
+                                            }
+                                        }
+    
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": " User not found"
+                        }
+                    }
+            }
+        }
+    }
+       
+}
